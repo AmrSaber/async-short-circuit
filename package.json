@@ -1,0 +1,34 @@
+{
+  "name": "async-short-circuit",
+  "version": "0.1.0",
+  "description": "Short circuit logic for boolean promises",
+  "main": "src/index.js",
+  "scripts": {
+    "publish": "npm publish --access public",
+    "bump:major": "npm version major --no-git-tag-version",
+    "bump:minor": "npm version minor --no-git-tag-version",
+    "bump:patch": "npm version patch --no-git-tag-version",
+    "postversion": "git add -- package.json package-lock.json && git commit -m \":arrow_up: Bump version to $npm_package_version\" && git tag \"v$npm_package_version\""
+  },
+  "keywords": [
+    "async",
+    "promises",
+    "short",
+    "circuit",
+    "short-circuit",
+    "logic",
+    "boolean",
+    "and",
+    "or"
+  ],
+  "author": "amrsaber",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.1"
+  },
+  "engines": {
+    "node": ">=8.x.x"
+  }
+}
