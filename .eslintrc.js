@@ -16,6 +16,7 @@ module.exports = {
         'consistent-return': 'off',
         'no-underscore-dangle': 'off',
         'import/prefer-default-export': 'off',
+        'eqeqeq': 'off',
 
         // overridden from airbnb
         curly: ['error', 'all'],

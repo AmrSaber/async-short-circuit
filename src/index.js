@@ -3,13 +3,13 @@
  * Once one of the promises return false, the returning promise will resolve with false, ignoring the other promises.
  * If all the promises return true, the function will return true.
  *
- * @param {[Promise<Boolean>]} promises
+ * @param {[Promise]} promises
  *
  * @returns {Promise<Boolean>}
  */
 function asyncAnd(promises) {
   return new Promise((resolve, reject) => {
-    const notify = value => { if (value === false) { resolve(false); } };
+    const notify = value => { if (value == false) { resolve(false); } };
 
     promises.forEach(promise => promise.then(notify));
 
@@ -25,13 +25,13 @@ function asyncAnd(promises) {
  * Once one of the promises return true, the returning promise will resolve with true, ignoring the other promises.
  * If all the promises return false, the function will return false.
  *
- * @param {[Promise<boolean>]} promises
+ * @param {[Promise]} promises
  *
  * @returns {Promise<Boolean>}
  */
 function asyncOr(promises) {
   return new Promise((resolve, reject) => {
-    const notify = value => { if (value === true) { resolve(true); } };
+    const notify = value => { if (value == true) { resolve(true); } };
 
     promises.forEach(promise => promise.then(notify));
 
