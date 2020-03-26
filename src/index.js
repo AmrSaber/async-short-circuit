@@ -15,8 +15,11 @@ function asyncAnd(promises) {
 
     Promise
       .all(promises)
-      .then(() => resolve(true))
-      .catch(err => reject(err));
+      .then(values => {
+        const booleanAnd = values.reduce((a, b) => a && b);
+        resolve(Boolean(booleanAnd));
+      })
+      .catch(reject);
   });
 }
 
@@ -37,8 +40,11 @@ function asyncOr(promises) {
 
     Promise
       .all(promises)
-      .then(() => resolve(false))
-      .catch(err => reject(err));
+      .then(values => {
+        const booleanOr = values.reduce((a, b) => a || b);
+        resolve(Boolean(booleanOr));
+      })
+      .catch(reject);
   });
 }
 
