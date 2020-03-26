@@ -1,12 +1,15 @@
 {
   "name": "async-short-circuit",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Short circuit logic for boolean promises",
   "main": "src/index.js",
   "repository": "https://github.com/AmrSaber/async-short-circuit",
   "author": "amrsaber",
   "license": "MIT",
   "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "lint": "eslint src/ tests/",
     "bump:major": "npm version major --no-git-tag-version",
     "bump:minor": "npm version minor --no-git-tag-version",
     "bump:patch": "npm version patch --no-git-tag-version",
@@ -24,9 +27,12 @@
     "or"
   ],
   "devDependencies": {
+    "@types/jest": "^25.1.4",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
-    "eslint-plugin-import": "^2.20.1"
+    "eslint-plugin-import": "^2.20.1",
+    "faker": "^4.1.0",
+    "jest": "^25.2.1"
   },
   "engines": {
     "node": ">=8.x.x"
