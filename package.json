@@ -1,6 +1,6 @@
 {
   "name": "async-short-circuit",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Short circuit logic for boolean promises",
   "main": "src/index.js",
   "repository": "https://github.com/AmrSaber/async-short-circuit",
