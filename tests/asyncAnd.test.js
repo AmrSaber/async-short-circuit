@@ -12,7 +12,33 @@ describe('UNIT For asyncAnd', () => {
 
     asyncAnd(promises).then(value => {
       const expectedValue = booleans.reduce((a, b) => a && b);
-      expect(value).toBe(Boolean(expectedValue));
+      expect(value).toBe(expectedValue);
+      done();
+    });
+  });
+
+  it('returns the first falsy value that is resolves', done => {
+    const promises = [
+      createTimedPromise('', 1),
+      createTimedPromise(null, 0.5),
+      createTimedPromise(true, 0.5),
+    ];
+
+    asyncAnd(promises).then(value => {
+      expect(value).toEqual(null);
+      done();
+    });
+  });
+
+  it('returns the result of ANDing all the resolved value if none of them is falsy', done => {
+    const promises = [
+      createTimedPromise('some-string', 0.1),
+      createTimedPromise(true, 0.1),
+      createTimedPromise(1, 0.1),
+    ];
+
+    asyncAnd(promises).then(value => {
+      expect(value).toEqual(1); // ANDing several truthy values returns the last value
       done();
     });
   });
@@ -35,16 +61,16 @@ describe('UNIT For asyncAnd', () => {
     });
 
     asyncAnd(promisesData.map(d => d.promise)).then(result => {
-      expect(result).toBe(false);
+      expect(result).toBeFalsy();
 
       const positionOfFirstFalse = promisesData.findIndex(({ value }) => value == false);
 
       // Assert that it short-circuited on the first false
       promisesData.forEach((promiseData, i) => {
         if (i <= positionOfFirstFalse) {
-          expect(promiseData.isDone()).toBe(true);
+          expect(promiseData.isDone()).toBeTruthy();
         } else {
-          expect(promiseData.isDone()).toBe(false);
+          expect(promiseData.isDone()).toBeFalsy();
         }
       });
 

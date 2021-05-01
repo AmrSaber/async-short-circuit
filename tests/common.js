@@ -10,7 +10,7 @@ const faker = require('faker');
  */
 function getRandomBooleanPromises(length = 4) {
   const booleans = [];
-  for (let i = 0; i < length; ++i) { booleans.push(faker.random.boolean()); }
+  for (let i = 0; i < length; ++i) { booleans.push(faker.datatype.boolean()); }
 
   const promises = booleans.map(value => new Promise(resolve => resolve(value)));
 
