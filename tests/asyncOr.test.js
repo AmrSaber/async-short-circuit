@@ -17,6 +17,33 @@ describe('UNIT For asyncOr', () => {
     });
   });
 
+  it('returns the first truthy value that is resolves', done => {
+    const promises = [
+      createTimedPromise('some-string', 1),
+      createTimedPromise(123, 0.5),
+      createTimedPromise(false, 0.5),
+    ];
+
+    asyncOr(promises).then(value => {
+      expect(value).toEqual(123);
+      done();
+    });
+  });
+
+  it('returns the result of ORing all the resolved value if none of them is truthy', done => {
+    const promises = [
+      createTimedPromise(0, 0.1),
+      createTimedPromise(null, 0.1),
+      createTimedPromise(false, 0.1),
+      createTimedPromise('', 0.1),
+    ];
+
+    asyncOr(promises).then(value => {
+      expect(value).toEqual(''); // ORing several falsy values returns the last value
+      done();
+    });
+  });
+
   /**
    * This test creates 4 promises, 2 of them resolve with true and the other 2 resolve with false
    * And tests that asyncOr resolves when the first promise that resolves with true is resolved.
@@ -35,16 +62,16 @@ describe('UNIT For asyncOr', () => {
     });
 
     asyncOr(promisesData.map(d => d.promise)).then(result => {
-      expect(result).toBe(true);
+      expect(result).toBeTruthy();
 
       const positionOfFirstTrue = promisesData.findIndex(({ value }) => value == true);
 
       // Assert that it short-circuited on the first false
       promisesData.forEach((promiseData, i) => {
         if (i <= positionOfFirstTrue) {
-          expect(promiseData.isDone()).toBe(true);
+          expect(promiseData.isDone()).toBeTruthy();
         } else {
-          expect(promiseData.isDone()).toBe(false);
+          expect(promiseData.isDone()).toBeFalsy();
         }
       });
 
