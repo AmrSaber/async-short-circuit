@@ -10,7 +10,7 @@
  *
  * @returns a promise that resolves with the result of ANDing the given promises.
  */
-export function asyncAnd(promises: Promise[]): Promise;
+export function asyncAnd(promises: Promise[]): Promise<any>;
 
 
 /**
@@ -25,4 +25,4 @@ export function asyncAnd(promises: Promise[]): Promise;
  *
  * @returns a promise that resolves with the result of ORing the given promises.
  */
-export function asyncOr(promises: Promise[]): Promise;
+export function asyncOr(promises: Promise[]): Promise<any>;
