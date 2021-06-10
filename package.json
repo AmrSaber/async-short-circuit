@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Short circuit logic for boolean promises",
   "main": "src/index.js",
+  "types": "src/index.d.ts",
   "repository": "https://github.com/AmrSaber/async-short-circuit",
   "author": "amrsaber",
   "license": "MIT",
