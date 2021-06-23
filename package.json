@@ -1,6 +1,6 @@
 {
   "name": "async-short-circuit",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "Short circuit logic for boolean promises",
   "main": "src/index.js",
   "types": "src/index.d.ts",
